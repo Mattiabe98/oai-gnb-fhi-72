@@ -10,4 +10,4 @@ spec:
   clusterIP: None
   {{- end }}{{ end }}
   selector:
-    {{- include "oai-traffic-selector.selectorLabels" . | nindent 4 }}
+    {{- include "oai-traffic-server.selectorLabels" . | nindent 4 }}
