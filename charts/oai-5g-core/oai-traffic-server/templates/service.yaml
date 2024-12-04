@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    {{- include "oai-traffic-server.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  {{- if .Values.global }}{{ if not .Values.global.clusterIpServiceIpAllocation }}
+  clusterIP: None
+  {{- end }}{{ end }}
+  selector:
+    {{- include "oai-traffic-selector.selectorLabels" . | nindent 4 }}
