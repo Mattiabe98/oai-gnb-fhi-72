@@ -46,10 +46,6 @@ spec:
             limits:
               memory: 50Mi
               cpu: 1m
-          securityContext:
-            sysctls:
-              - name: net.ipv4.ip_forward
-                value: "1"
       containers:
       - name: iperf3
         volumeMounts:
