@@ -15,6 +15,6 @@ spec:
       targetPort: "tcp-{{ . }}"
       protocol: TCP
       name: "tcp-{{ . }}"
-    {{ -end }}
+    {{- end }}
   selector:
     {{- include "oai-traffic-server.selectorLabels" . | nindent 4 }}
