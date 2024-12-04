@@ -61,9 +61,9 @@ tcpdumpimage:
   pullPolicy: IfNotPresent
   
 trafficimage:
-  repository: docker.io/oaisoftwarealliance/oai-tcpdump-init
-  version: alpine-3.20
-  #pullPolicy: IfNotPresent or Never or Always
+  repository: docker.io/oaisoftwarealliance/oai-nr-ue           # dockehub oaisoftwarealliance/oai-nr-ue
+  version: 2024.w32 # image tag or develop 
+  # pullPolicy: IfNotPresent or Never or Always
   pullPolicy: IfNotPresent
 
 ## NF is the network function and tcpdump is the tcpdump container. 
