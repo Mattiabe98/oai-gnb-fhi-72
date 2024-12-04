@@ -139,9 +139,7 @@ spec:
         {{- if .Values.start.traffic}}
         command: [ "/bin/bash", "-c" ]
         args: 
-          - |
-            RFSIM_IP_ADDRESS=$(getent hosts "$RFSIM_HOST" | awk '{print $1}');
-            echo "Resolved RFSIM_IP_ADDRESS: $RFSIM_IP_ADDRESS";
+          - RFSIM_IP_ADDRESS=\$(getent hosts \"\$RFSIM_HOST\" | awk '{print \$1}'); echo \"Resolved RFSIM_IP_ADDRESS: \$RFSIM_IP_ADDRESS\";
             exec /usr/bin/iperf3 -c oai-traffic-server --time 0 -B "$RFSIM_IP_ADDRESS";
         {{- else}}
         command:
