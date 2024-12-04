@@ -140,7 +140,6 @@ spec:
         command: [ "/bin/bash", "-c" ]
         args:
           - RFSIM_IP_ADDRESS=$(getent hosts $RFSIM_HOST | awk '{print $1}');
-            getent hosts $RFSIM_HOST;
             echo $RFSIM_HOST;
             echo $RFSIM_IP_ADDRESS;
         {{- else}}
