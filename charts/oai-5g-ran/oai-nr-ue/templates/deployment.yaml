@@ -141,7 +141,7 @@ spec:
         command:
           - /bin/sh
           - -c
-          - /usr/bin/iperf3 -c oai-traffic-server
+          - /usr/bin/iperf3 -c oai-traffic-server -t 0
         {{- else}}
         command:
           - /bin/sleep
