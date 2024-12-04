@@ -145,6 +145,11 @@ spec:
           - /bin/sleep
           - infinity
         {{- end}}
+        env:
+          - name: TZ
+            value: {{ .Values.config.timeZone }}
+          - name: RFSIM_HOST
+            value: {{ .Values.config.rfSimServer }}
       {{- end }}
       volumes:
       - configMap:
