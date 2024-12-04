@@ -61,7 +61,6 @@ spec:
         command: [ "/bin/bash", "-c" ]
         args:
           - RFSIM_IP_ADDRESS=$(getent hosts $RFSIM_HOST | awk '{print $1}');
-            RFSIM_IP_ADDRESS=$(if [[ $RFSIM_IP_ADDRESS ]]; then echo $RFSIM_IP_ADDRESS; else echo $RFSIM_HOST;fi);
             {{- if eq .Values.config.usrp "b2xx"}}
               /opt/oai-gnb/bin/uhd_images_downloader.py -t b2xx;
             {{- else if eq .Values.config.usrp "n3xx" }}
@@ -141,7 +140,6 @@ spec:
         command: [ "/bin/bash", "-c" ]
         args: 
           - RFSIM_IP_ADDRESS=$(getent hosts $RFSIM_HOST | awk '{print $1}');
-            RFSIM_IP_ADDRESS=$(if [[ $RFSIM_IP_ADDRESS ]]; then echo $RFSIM_IP_ADDRESS; else echo $RFSIM_HOST;fi);
             exec /usr/bin/iperf3 -c oai-traffic-server -t 0 -B $RFSIM_IP_ADDRESS;
         {{- else}}
         command:
