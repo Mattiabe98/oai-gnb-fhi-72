@@ -137,7 +137,7 @@ spec:
               drop:
                - ALL
         {{- if .Values.start.traffic}}
-        command: [ "/bin/bash", "-c" ]
+        command: [ "/bin/sh", "-c" ]
         args:
           - sleep 10;
             TUN_IP_ADDRESS=$(ip -4 addr show oaitun_ue1 | grep -oP 'inet \K[\d.]+');
