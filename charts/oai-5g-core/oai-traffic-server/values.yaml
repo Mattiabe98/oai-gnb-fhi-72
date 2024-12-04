@@ -54,10 +54,10 @@ securityContext:
 resources:
   define: false
   limits:
-    cpu: 100m
+    cpu: 2000m
     memory: 128Mi
   requests:
-    cpu: 100m
+    cpu: 2000m
     memory: 128Mi
 
 readinessProbe: true
