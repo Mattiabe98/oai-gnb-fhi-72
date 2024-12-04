@@ -60,9 +60,9 @@ tcpdumpimage:
   #pullPolicy: IfNotPresent or Never or Always
   pullPolicy: IfNotPresent
   
-trafficimage:
-  repository: docker.io/networkstatic/iperf3
-  version: latest
+tcpdumpimage:
+  repository: docker.io/oaisoftwarealliance/oai-tcpdump-init
+  version: alpine-3.20
   #pullPolicy: IfNotPresent or Never or Always
   pullPolicy: IfNotPresent
 
