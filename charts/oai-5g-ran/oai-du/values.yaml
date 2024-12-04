@@ -72,7 +72,13 @@ podSecurityContext:
   runAsGroup: 0
 
 securityContext:
-  privileged: false
+ capabilities:
+    add:
+     - NET_ADMIN
+     - NET_RAW
+    drop:
+     - ALL
+ privileged: true
 
 start:
   gnbdu: true #If false the network function container will run in sleep mode for manually testing
