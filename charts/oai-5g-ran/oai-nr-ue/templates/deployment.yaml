@@ -138,10 +138,11 @@ spec:
               drop:
                - ALL
         {{- if .Values.start.traffic}}
-        command:
-          - /bin/sh
-          - -c
-          - /usr/bin/iperf3 -c oai-traffic-server -t 0 -B $RFSIM_IP_ADDRESS
+        command: [ "/bin/bash", "-c" ]
+        args: 
+          - RFSIM_IP_ADDRESS=$(getent hosts $RFSIM_HOST | awk '{print $1}');
+            RFSIM_IP_ADDRESS=$(if [[ $RFSIM_IP_ADDRESS ]]; then echo $RFSIM_IP_ADDRESS; else echo $RFSIM_HOST;fi);
+            exec /usr/bin/iperf3 -c oai-traffic-server -t 0 -B $RFSIM_IP_ADDRESS;
         {{- else}}
         command:
           - /bin/sleep
