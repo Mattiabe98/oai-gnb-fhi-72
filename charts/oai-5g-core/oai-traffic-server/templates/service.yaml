@@ -12,7 +12,7 @@ spec:
   ports:
     {{- range untilStep (.Values.exposedPorts.min_port|int) (.Values.exposedPorts.max_port|int) 1 }}
     - port: {{ . }}
-      targetPort: "tcp-{{ . }}"
+      targetPort: "{{ . }}"
       protocol: TCP
       name: "tcp-{{ . }}"
     {{- end }}
