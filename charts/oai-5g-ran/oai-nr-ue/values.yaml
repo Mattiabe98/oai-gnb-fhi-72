@@ -60,7 +60,7 @@ tcpdumpimage:
   #pullPolicy: IfNotPresent or Never or Always
   pullPolicy: IfNotPresent
   
-tcpdumpimage:
+trafficimage:
   repository: docker.io/networkstatic/iperf3
   version: latest
   #pullPolicy: IfNotPresent or Never or Always
