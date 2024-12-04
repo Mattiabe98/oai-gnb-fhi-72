@@ -97,19 +97,19 @@ tcpdumpimage:
 ## https://kubernetes.io/docs/concepts/configuration/manage-resources-containers
 ## https://kubernetes.io/docs/concepts/workloads/pods/pod-qos
 resources:
-  define: false
+  define: true
   limits:
     nf:
-      cpu: 2000m
-      memory: 2Gi
+      cpu: 4000m
+      memory: 4Gi
     #If tcpdump container is disabled this value will not be used
     tcpdump:
       cpu: 200m
       memory: 128Mi
   requests:
     nf:
-      cpu: 2000m
-      memory: 2Gi
+      cpu: 4000m
+      memory: 4Gi
     #If tcpdump container is disabled this value will not be used
     tcpdump:
       cpu: 100m
