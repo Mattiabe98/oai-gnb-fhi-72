@@ -1,5 +1,5 @@
 global:
-  kubernetesDistribution: Vanilla #Openshift/Vanilla Kubernetes for Upstream Kubernetes
+  kubernetesDistribution: Openshift #Openshift/Vanilla Kubernetes for Upstream Kubernetes
   coreNetworkConfigMap: core
   clusterIpServiceIpAllocation: false #this will allocate ip-address to cluster Ip service
   waitForAMF: true     #gNB waits for AMF 

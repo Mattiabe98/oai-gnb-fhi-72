@@ -1,4 +1,4 @@
-kubernetesDistribution: Vanilla  #Vanilla for community kubernetes distribution else Openshift for Openshift
+kubernetesDistribution: Openshift  #Vanilla for community kubernetes distribution else Openshift for Openshift
 
 ## In case of using these charts on Openshift then please use UBI images
 ## To know more about them follow this tutorial https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/tree/master/openshift
@@ -22,6 +22,9 @@ serviceAccount:
 podSecurityContext:
   runAsUser: 0
   runAsGroup: 0
+  sysctls:
+    - name: net.ipv4.ip_forward
+      value: "1"
 
 #service type is fixed to clusterIP, it is only support for non multus interface (eth0)
 exposedPorts:

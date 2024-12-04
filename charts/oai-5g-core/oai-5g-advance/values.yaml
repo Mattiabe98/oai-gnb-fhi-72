@@ -1,5 +1,5 @@
 global:
-  kubernetesDistribution: Vanilla #Openshift/Vanilla Vanilla for Upstream Kubernetes
+  kubernetesDistribution: Openshift #Openshift/Vanilla Vanilla for Upstream Kubernetes
   coreNetworkConfigMap: oai-5g-advance
   clusterIpServiceIpAllocation: true #this will allocate ip-address to cluster Ip service
   waitForNRF: true
