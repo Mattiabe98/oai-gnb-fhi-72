@@ -42,10 +42,10 @@ spec:
           resources:
             requests:
               memory: 50Mi
-              cpu: 1m
+              cpu: 100m
             limits:
               memory: 50Mi
-              cpu: 1m
+              cpu: 100m
       containers:
       - name: iperf3
         volumeMounts:
