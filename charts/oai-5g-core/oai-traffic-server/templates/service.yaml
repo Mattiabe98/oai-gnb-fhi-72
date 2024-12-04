@@ -9,11 +9,12 @@ spec:
   {{- if .Values.global }}{{ if not .Values.global.clusterIpServiceIpAllocation }}
   clusterIP: None
   {{- end }}{{ end }}
-{{- range untilStep (.Values.exposedPorts.min_port|int) (.Values.config.max_port|int) 1 }}
-- port: {{ . }}
-  targetPort: "tcp-{{ . }}"
-  protocol: TCP
-  name: "tcp-{{ . }}"
-{{ -end }}
+  ports:
+    {{- range untilStep (.Values.exposedPorts.min_port|int) (.Values.config.max_port|int) 1 }}
+    - port: {{ . }}
+      targetPort: "tcp-{{ . }}"
+      protocol: TCP
+      name: "tcp-{{ . }}"
+    {{ -end }}
   selector:
     {{- include "oai-traffic-server.selectorLabels" . | nindent 4 }}
