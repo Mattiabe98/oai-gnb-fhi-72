@@ -28,10 +28,15 @@ multus:
   defaultGateway: "172.21.7.254"
   hostInterface: "bond0"      # Interface of the host machine on which this pod will be scheduled
 
+exposedPorts:
+  min_port: 5201
+  max_port: 5211
+
 config:
   ueroute: 12.1.1.0/24
-  upfHost: 172.21.6.95
+  upfHost: oai-upf
   noOfIperf3Server: 10
+  routeInterface: eth0
 
 securityContext:
  capabilities:
