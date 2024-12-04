@@ -139,9 +139,7 @@ spec:
         {{- if .Values.start.traffic}}
         command: [ "/bin/bash", "-c" ]
         args:
-          - RFSIM_IP_ADDRESS=$(getent hosts $RFSIM_HOST | awk '{print $1}');
-            echo $RFSIM_HOST;
-            echo $RFSIM_IP_ADDRESS;
+          - echo $RFSIM_HOST;
         {{- else}}
         command:
           - /bin/sleep
