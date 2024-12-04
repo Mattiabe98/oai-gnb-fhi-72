@@ -10,7 +10,7 @@ spec:
   clusterIP: None
   {{- end }}{{ end }}
   ports:
-    {{- range untilStep (.Values.exposedPorts.min_port|int) (.Values.config.max_port|int) 1 }}
+    {{- range untilStep (.Values.exposedPorts.min_port|int) (.Values.exposedPorts.max_port|int) 1 }}
     - port: {{ . }}
       targetPort: "tcp-{{ . }}"
       protocol: TCP
