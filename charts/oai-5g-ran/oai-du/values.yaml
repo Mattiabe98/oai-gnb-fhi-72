@@ -98,7 +98,7 @@ tcpdumpimage:
 ## https://kubernetes.io/docs/concepts/configuration/manage-resources-containers
 ## https://kubernetes.io/docs/concepts/workloads/pods/pod-qos
 resources:
-  define: true
+  define: false
   limits:
     nf:
       cpu: 4000m
