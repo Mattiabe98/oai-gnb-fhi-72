@@ -70,11 +70,6 @@ config:
 podSecurityContext:
   runAsUser: 0
   runAsGroup: 0
-  capabilities:
-    add:
-     - SYS_NICE
-     - NET_ADMIN
-     - NET_RAW
 
 securityContext:
  capabilities:
