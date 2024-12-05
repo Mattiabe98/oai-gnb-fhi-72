@@ -79,6 +79,15 @@ config:
 podSecurityContext:
   runAsUser: 0
   runAsGroup: 0
+  sysctls:
+    - name: net.core.wmem_max
+      value: "62500000"
+    - name: net.core.rmem_max
+      value: "62500000"
+    - name: net.core.wmem_default
+      value: "62500000"
+    - name: net.core.rmem_default
+      value: "62500000"
 
 securityContext:
   privileged: false
