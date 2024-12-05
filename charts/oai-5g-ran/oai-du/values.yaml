@@ -75,7 +75,6 @@ podSecurityContext:
      - SYS_NICE
      - NET_ADMIN
      - NET_RAW
- privileged: true 
 
 securityContext:
  capabilities:
