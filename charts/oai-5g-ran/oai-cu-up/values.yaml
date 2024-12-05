@@ -90,7 +90,7 @@ podSecurityContext:
       value: "62500000"
 
 securityContext:
-  privileged: false
+  privileged: true
 
 start:
   oaicuup: true #If false the network function container will run in sleep mode for manually testing
