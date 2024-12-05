@@ -65,6 +65,8 @@ spec:
         volumeMounts:
           - mountPath: /opt/oai-gnb/etc
             name: configuration
+        securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
         {{- if .Values.resources.define}}
         resources:
           requests:
