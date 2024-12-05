@@ -75,8 +75,6 @@ podSecurityContext:
      - SYS_NICE
      - NET_ADMIN
      - NET_RAW
-    drop:
-     - ALL
  privileged: true 
 
 securityContext:
