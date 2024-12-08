@@ -84,7 +84,7 @@ securityContext:
   privileged: false
 
 start:
-  oaicuup: true #If false the network function container will run in sleep mode for manually testing
+  oaicuup: false #If false the network function container will run in sleep mode for manually testing
   tcpdump: false
 
 includeTcpDumpContainer: false #If true it will add a tcpdump container inside network function pod for debugging
