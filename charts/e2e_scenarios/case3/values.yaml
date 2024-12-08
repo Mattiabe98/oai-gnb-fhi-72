@@ -319,7 +319,7 @@ oai-cu-cp:
 oai-cu-up:
   enabled: true
   nfimage:  
-    repository: docker.io/oaisoftwarealliance/oai-nr-cuup
+    repository: docker.io/oaisoftwarealliance/oai-gnb
     version: 2024.w32                         ## The branch to be used to pull from dockerhub
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
