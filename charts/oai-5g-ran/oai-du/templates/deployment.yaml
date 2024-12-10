@@ -126,16 +126,14 @@ spec:
             value: {{ .Values.config.timeZone }}
           - name: USE_ADDITIONAL_OPTIONS
             value: {{ .Values.config.useAdditionalOptions }}
-          - name: AMF_HOST
-            value: {{ .Values.config.amfhost }}
-          - name: N2_IF_NAME
-            value: {{ .Values.config.n2IfName }}
-          - name: N3_IF_NAME
-            value: {{ .Values.config.n3IfName }}
           - name: SRIOV_RESOURCE_NAME_UPLANE
             value: {{ .Values.multus.ruInterface.sriovResourceNameUplane }}
           - name: SRIOV_RESOURCE_NAME_CPLANE
             value: {{ .Values.multus.ruInterface.sriovResourceNameCplane }}
+          - name: CU_HOST
+            value: {{ .Values.config.cuHost }}
+          - name: F1_IF_NAME
+            value: {{ .Values.config.f1IfName }}
       {{- if .Values.includeTcpDumpContainer }}
       - name: tcpdump
         image: "{{ .Values.tcpdumpimage.repository }}:{{ .Values.tcpdumpimage.version }}"
