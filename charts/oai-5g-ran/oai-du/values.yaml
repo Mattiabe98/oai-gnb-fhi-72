@@ -1,16 +1,16 @@
-kubernetesDistribution: Openshift  #Vanilla for community kubernetes distribution else Openshift for Openshift
+kubernetesType: Openshift  #Vanilla for community kubernetes distribution else Openshift for Openshift
 
 ## In case of using these charts on Openshift then please use UBI images
 ## To know more about them follow this tutorial https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/tree/master/openshift
 nfimage:   # image name either locally present or in a public/private repository
-  repository: docker.io/oaisoftwarealliance/oai-gnb           ## dockerhub oaisoftwarealliance/oai-gnb
-  version: 2024.w32 # image tag or develop
+  repository: docker.io/oaisoftwarealliance/oai-gnb-fhi72
+  version: 2024.w48 # image tag or develop
   # pullPolicy: IfNotPresent or Never or Always
   pullPolicy: IfNotPresent
 
-## good to use when pulling images from docker-hub mention
+# good to use when pulling images from docker-hub mention 
 imagePullSecrets:
-  - name: "regcred"
+ - name: "regcred"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -21,13 +21,20 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: "oai-du-sa"
 
+#service type is fixed to clusterIP, it is only support for non multus interface (eth0)
 
-# oai-du helm-charts can be used in RFSimulated mode which does not require multiple interaces. 
-# In case you use the charts with a RU/USRP you need a dedicated interface with the RU. 
+# These helm-charts can be used for two purpose
+# 1. RFSimulated oai-gNB: Only requires 1 interface for N2 and N3. You can use Kubernetes default interface eth0
+# 2. Physical gNB with Ethernet based USRP or RRU: You need to use ruInterface to connect with RU. Make sure that the ip-address you choose can reach to RU. 
+#                                                 Using a dedicated interface for N2 or N3 is optional you can still use eth0. 
+# 3. Another thing you can chose to use same virtual interface for N2/N3 its optional to have two different
+
+## NOTE: To use these charts with USRP B210 you need to modify and mount usb from the host. 
 ## Change these ip-addresses according to your environment
 
+
 multus:
-  # if default gateway is left blank then it will be removed
+  # if default gatway is empty then it will be removed
   defaultGateway: ""
   f1Interface:  # use this interface if using one interface for all 3GPP interfaces
     create: false
@@ -40,14 +47,13 @@ multus:
     hostInterface: "bond0"      # Interface of the host machine on which this pod will be scheduled
   ruInterface:            #Only needed if using a ethernet based RU/USRP
     create: false
-    ipAdd: "192.168.80.90"
-    netmask: "24"
-    name: "ru"
-    # if gatway is commented then it will be remove
-    #gateway: "192.168.80.1"  #In case you don't have a gateway remove it from here
-    ## The value must be [0, master's MTU]. If commented it will masters MTU
-    #mtu: 9000
-    hostInterface: "bond0"      # Interface of the host machine on which this pod will be scheduled
+    mtu: 9216
+    vlan: 3 #vvdn 4 benetel 3
+    cPlaneMacAdd: 00:11:22:33:44:67 #vvdn 76:76:64:6e:00:01 #benetel 00:11:22:33:44:67
+    uPlaneMacAdd: 00:11:22:33:44:66 #vvdn 76:76:64:6e:00:02 #benetel 00:11:22:33:44:66
+    sriovNetworkNamespace: openshift-sriov-network-operator
+    sriovResourceNameCplane: ruvfioc
+    sriovResourceNameUplane: ruvfiou
 
 ## If you want to change more configuration parameters then you should mount the config file  
 # in templates/configmap.yaml
@@ -55,43 +61,49 @@ multus:
 config:
   timeZone: "Europe/Paris"
   useAdditionalOptions: "--sa --rfsim --log_config.global_log_options level,nocolor,time"
-  duName: "oai-du-rfsim"
+  gnbName: "oai-du-rfsim"
   mcc: "001"   # check the information with AMF, SMF, UPF
   mnc: "01"    # check the information with AMF, SMF, UPF
   tac: "1"     # check the information with AMF
-  sst: "1"  #currently only 4 standard values are allowed 1,2,3,4
+  sst: "1"     
+  ruCPlaneMacAdd: 70:b3:d5:e1:5b:ff #benetel 70:b3:d5:e1:5b:ff
+  ruUPlaneMacAdd: 70:b3:d5:e1:5b:ff #benetel 70:b3:d5:e1:5b:ff
   usrp: rfsim   #allowed values rfsim, b2xx, n3xx or x3xx
   f1IfName: "eth0"   #if multus.f1Interface.create is true then use f1
   cuHost: "oai-cu" ## Ip-address or hostname
   f1cuPort: "2153"   #2153 if using same interface for f1 and n3 else standard port 2152 should be use if f1 and n3 interface are different
   f1duPort: "2153"   #2153 if using same interface for f1 and n3 else standard port 2152 should be use if f1 and n3 interface are different
-
+  
 ## Debugging section
-podSecurityContext:
-  runAsUser: 0
-  runAsGroup: 0
-
-securityContext:
- capabilities:
-    add:
-     - SYS_NICE
-     - NET_ADMIN
-     - NET_RAW
-    drop:
-     - ALL
- privileged: true
-
 start:
   gnbdu: true #If false the network function container will run in sleep mode for manually testing
   tcpdump: false
 
+##Only for the NF container
+securityContext:
+  privileged: true
+  capabilities:
+    add:
+     - IPC_LOCK
+     - SYS_NICE
+     - SYS_ADMIN
+     - NET_ADMIN
+     - NET_RAW
+    drop:
+     - ALL
+
 includeTcpDumpContainer: false #If true it will add a tcpdump container inside network function pod for debugging
 
+podSecurityContext:
+  runAsUser: 0
+  runAsGroup: 0
+
+## For openshift you can use rhel8/support-tools:8.7-13
 tcpdumpimage:
-  repository: docker.io/oaisoftwarealliance/oai-tcpdump-init
-  version: alpine-3.20
-  #pullPolicy: IfNotPresent or Never or Always
-  pullPolicy: IfNotPresent
+   repository: docker.io/corfr/tcpdump
+   version: latest
+   #pullPolicy: IfNotPresent or Never or Always
+   pullPolicy: IfNotPresent
 
 ## NF is the network function and tcpdump is the tcpdump container. 
 ## To know more about request and limit it is better to understand that how Kubernetes QoS works. 
@@ -101,23 +113,39 @@ resources:
   define: false
   limits:
     nf:
-      cpu: 4000m
-      memory: 4Gi
+      cpu: 8
+      memory: 8Gi
+      # size of the hugepages is 1 Gi
+      hugepages: 10Gi
+      sriovCplaneClaim:
+        name: openshift.io/ruvfioc
+        quantity: 1
+      sriovUplaneClaim:
+        name: openshift.io/ruvfiou
+        quantity: 1
     #If tcpdump container is disabled this value will not be used
     tcpdump:
-      cpu: 200m
+      cpu: 100m
       memory: 128Mi
   requests:
     nf:
-      cpu: 4000m
-      memory: 4Gi
+      cpu: 8
+      memory: 8Gi
+      # size of the hugepages is 1 Gi
+      hugepages: 10Gi
+      sriovCplaneClaim:
+        name: openshift.io/ruvfioc
+        quantity: 1
+      sriovUplaneClaim:
+        name: openshift.io/ruvfiou
+        quantity: 1
     #If tcpdump container is disabled this value will not be used
     tcpdump:
       cpu: 100m
       memory: 128Mi
 
-tolerations: []
 
+tolerations: []
 affinity: {}
 
 terminationGracePeriodSeconds: 5
