@@ -36,6 +36,15 @@ serviceAccount:
 multus:
   # if default gatway is empty then it will be removed
   defaultGateway: "" #172.21.11.254
+  f1Interface: # use this interface if using one interface for all 3GPP interfaces
+    create: false
+    ipAdd: "172.21.16.92"
+    netmask: "22"
+    name: "f1"
+    # if gatway is commented then it will be removed
+    #gateway: "172.21.19.254"
+    #routes: 
+    hostInterface: "bond0"      # Interface of the host machine on which this pod will be scheduled
   n2Interface:
     create: false
     # #name inside the pod is hardcoded right now
@@ -57,15 +66,7 @@ multus:
     #Gateway: "172.21.11.254"
     #routes:
     hostInterface: "bond0"      # Interface of the host machine on which this pod will be scheduled
-  ruInterface:            #Only needed if using a ethernet based RU/USRP
-    create: false
-    mtu: 9216
-    vlan: 3 #vvdn 4 benetel 3
-    cPlaneMacAdd: 00:11:22:33:44:67 #vvdn 76:76:64:6e:00:01 #benetel 00:11:22:33:44:67
-    uPlaneMacAdd: 00:11:22:33:44:66 #vvdn 76:76:64:6e:00:02 #benetel 00:11:22:33:44:66
-    sriovNetworkNamespace: openshift-sriov-network-operator
-    sriovResourceNameCplane: ruvfioc
-    sriovResourceNameUplane: ruvfiou
+
 
 ## If you want to change more configuration parameters then you should mount the config file  
 # in templates/configmap.yaml
