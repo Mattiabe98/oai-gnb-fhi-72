@@ -44,6 +44,23 @@ spec:
       imagePullSecrets:
         {{ toYaml .Values.imagePullSecrets | indent 8 }}
     {{- end }}
+    {{- if .Values.global }}{{ if .Values.global.waitForAMF }}
+      initContainers:
+        - name: init
+          image: docker.io/oaisoftwarealliance/oai-tcpdump-init:alpine-3.20
+          imagePullPolicy: IfNotPresent
+          command:
+            - /bin/sh
+            - -c
+            - until ncat -zv {{ .Values.config.amfhost }} 38412 --sctp ; do echo waiting for oai-amf to start; sleep 1; done
+          resources:
+            requests:
+              memory: 50Mi
+              cpu: 1m
+            limits:
+              memory: 50Mi
+              cpu: 1m
+    {{- end }}{{ end }}
       containers:
       - name: oai-cu
         image: "{{ .Values.nfimage.repository }}:{{ .Values.nfimage.version }}"
@@ -78,6 +95,9 @@ spec:
         - containerPort: 36412
           name: n2
           protocol: SCTP
+        - containerPort:  {{ .Values.config.f1cuPort }}
+          name: f1
+          protocol: UDP
         {{- if .Values.start.oaiCu}}
         command: [ "/bin/bash", "-c" ]
         args:
