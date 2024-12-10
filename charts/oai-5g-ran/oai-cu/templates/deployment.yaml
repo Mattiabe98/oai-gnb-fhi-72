@@ -66,8 +66,8 @@ spec:
         image: "{{ .Values.nfimage.repository }}:{{ .Values.nfimage.version }}"
         imagePullPolicy: {{ .Values.nfimage.pullPolicy }}
         volumeMounts:
-          - mountPath: /dev/hugepages
-            name: hugepage
+#          - mountPath: /dev/hugepages
+#            name: hugepage
           - mountPath: /opt/oai-gnb/etc
             name: configuration
             # subPath: gnb.conf
@@ -171,9 +171,9 @@ spec:
       - configMap:
           name: {{ .Chart.Name }}-configmap
         name: configuration
-      - emptyDir:
-          medium: HugePages
-        name: hugepage
+#      - emptyDir:
+#          medium: HugePages
+#       name: hugepage
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
