@@ -60,7 +60,7 @@ multus:
 # Example config files --> https://gitlab.eurecom.fr/oai/openairinterface5g/-/tree/develop/targets/PROJECTS/GENERIC-NR-5GC/CONF 
 config:
   timeZone: "Europe/Paris"
-  useAdditionalOptions: "--sa --rfsim --log_config.global_log_options level,nocolor,time"
+  useAdditionalOptions: "--sa --rfsim" --log_config.global_log_options level,nocolor,time"
   duName: "oai-du-rfsim"
   mcc: "001"   # check the information with AMF, SMF, UPF
   mnc: "01"    # check the information with AMF, SMF, UPF
@@ -76,7 +76,7 @@ config:
   
 ## Debugging section
 start:
-  gnbdu: true #If false the network function container will run in sleep mode for manually testing
+  gnbdu: false #If false the network function container will run in sleep mode for manually testing
   tcpdump: false
 
 ##Only for the NF container
