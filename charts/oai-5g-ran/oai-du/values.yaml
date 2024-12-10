@@ -52,8 +52,8 @@ multus:
     cPlaneMacAdd: 00:11:22:33:44:67 #vvdn 76:76:64:6e:00:01 #benetel 00:11:22:33:44:67
     uPlaneMacAdd: 00:11:22:33:44:66 #vvdn 76:76:64:6e:00:02 #benetel 00:11:22:33:44:66
     sriovNetworkNamespace: openshift-sriov-network-operator
-    sriovResourceNameCplane: ruvfioc
-    sriovResourceNameUplane: ruvfiou
+    sriovResourceNameCplane: resource-name-c-plane
+    sriovResourceNameUplane: resource-name-u-plane
 
 ## If you want to change more configuration parameters then you should mount the config file  
 # in templates/configmap.yaml
