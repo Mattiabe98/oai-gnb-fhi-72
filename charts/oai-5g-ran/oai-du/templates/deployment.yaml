@@ -16,7 +16,7 @@ spec:
       labels:
         {{- include "oai-du.selectorLabels" . | nindent 8 }}
         app: oai-du
-    {{- if .Values.multus.n2Interface.create }}
+    {{- if .Values.multus.f1Interface.create }}
       annotations:
         cpu-quota.crio.io: "disable"
         k8s.v1.cni.cncf.io/networks: >-
