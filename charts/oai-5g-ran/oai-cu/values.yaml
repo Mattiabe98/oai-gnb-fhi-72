@@ -35,7 +35,7 @@ serviceAccount:
 
 multus:
   # if default gatway is empty then it will be removed
-  defaultGateway: "172.21.11.254"
+  defaultGateway: "" #172.21.11.254
   n2Interface:
     create: false
     # #name inside the pod is hardcoded right now
