@@ -136,10 +136,6 @@ spec:
             value: {{ .Values.config.n3IfName }}
           - name: F1_IF_NAME
             value: {{ .Values.config.f1IfName }}
-          - name: SRIOV_RESOURCE_NAME_UPLANE
-            value: {{ .Values.multus.ruInterface.sriovResourceNameUplane }}
-          - name: SRIOV_RESOURCE_NAME_CPLANE
-            value: {{ .Values.multus.ruInterface.sriovResourceNameCplane }}
       {{- if .Values.includeTcpDumpContainer }}
       - name: tcpdump
         image: "{{ .Values.tcpdumpimage.repository }}:{{ .Values.tcpdumpimage.version }}"
