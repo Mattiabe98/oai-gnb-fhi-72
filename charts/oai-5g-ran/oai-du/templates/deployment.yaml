@@ -103,19 +103,19 @@ spec:
         args:
          -  CONF='/opt/oai-gnb/etc/du.conf';
             CU_IP_ADDRESS=$(getent hosts $CU_HOST | awk '{print $1}');
-            echo "CU IP address: $CU_IP_ADDRESS";
+            #echo "CU IP address: $CU_IP_ADDRESS";
             CU_IP_ADDRESS=$(if [[ $CU_IP_ADDRESS ]]; then echo $CU_IP_ADDRESS; else echo $CU_HOST;fi);
             F1_DU_IP_ADDRESS=$(ip -f inet addr show $F1_IF_NAME | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*");
-            echo "F1 DU IP address: $F1_DU_IP_ADDRESS";
+            #echo "F1 DU IP address: $F1_DU_IP_ADDRESS";
             PCI_ADD_U=PCIDEVICE_OPENSHIFT_IO_${SRIOV_RESOURCE_NAME_UPLANE^^};
             PCI_ADD_C=PCIDEVICE_OPENSHIFT_IO_${SRIOV_RESOURCE_NAME_CPLANE^^};
             U_PLANE_PCI_ADD=$(echo ${!PCI_ADD_U});
             C_PLANE_PCI_ADD=$(echo ${!PCI_ADD_C});
-            echo "U Plane PCI address: $U_PLANE_PCI_ADD";
-            echo "C Plane PCI address: $C_PLANE_PCI_ADD";
+            #echo "U Plane PCI address: $U_PLANE_PCI_ADD";
+            #echo "C Plane PCI address: $C_PLANE_PCI_ADD";
             LIST=($(grep -oP '@[a-zA-Z0-9_]+@' $CONF | grep CORE | sed -e "s#@##g" ));
             CPUS=($(cat /sys/fs/cgroup/cpuset.cpus.effective | awk '/-/{for (i=$1; i<=$2; i++)printf "%s%s",i,ORS;next} 1' ORS=' ' RS=, FS=-));
-            echo "CPUs: ${CPUS[@]}";
+            #echo "CPUs: ${CPUS[@]}";
             for i in ${!LIST[*]}; do eval "${LIST[$i]}=${CPUS[$i]}";done;
             VARS=$(grep -oP '@[a-zA-Z0-9_]+@' $CONF);
             for v in ${VARS};do N=`echo $v | sed -e "s#@##g"`; E="${E} -e s/${v}/${!N}/g";E="${E#' -e '}";done;
