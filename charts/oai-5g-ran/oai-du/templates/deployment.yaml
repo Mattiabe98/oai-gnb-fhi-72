@@ -110,7 +110,7 @@ spec:
             U_PLANE_PCI_ADD=$(echo ${!PCI_ADD_U});
             C_PLANE_PCI_ADD=$(echo ${!PCI_ADD_C});
             LIST=($(grep -oP '@[a-zA-Z0-9_]+@' $CONF | grep CORE | sed -e "s#@##g" ));
-            CPUS=($(cat /sys/fs/cgroup/cpuset/cpuset.cpus | awk '/-/{for (i=$1; i<=$2; i++)printf "%s%s",i,ORS;next} 1' ORS=' ' RS=, FS=-));
+            CPUS=($(cat /sys/fs/cgroup/cpuset.cpus.effective | awk '/-/{for (i=$1; i<=$2; i++)printf "%s%s",i,ORS;next} 1' ORS=' ' RS=, FS=-));
             for i in ${!LIST[*]}; do eval "${LIST[$i]}=${CPUS[$i]}";done;
             VARS=$(grep -oP '@[a-zA-Z0-9_]+@' $CONF);
             for v in ${VARS};do N=`echo $v | sed -e "s#@##g"`; E="${E} -e s/${v}/${!N}/g";E="${E#' -e '}";done;
