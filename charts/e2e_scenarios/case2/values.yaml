@@ -261,7 +261,7 @@ oai-cu:
   enabled: true
   nfimage:  
     repository: docker.io/oaisoftwarealliance/oai-gnb-fhi72
-    version: 2024.w32
+    version: 2024.w48
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   includeTcpDumpContainer: true #only for taking pcaps inside network function pod
@@ -325,7 +325,7 @@ oai-du:
   kubernetesDistribution: Kubernetes #Kubernetes/Kubernetes Kubernetes for Upstream Kubernetes
   nfimage:  
     repository: docker.io/oaisoftwarealliance/oai-gnb-fhi72
-    version: 2024.w32
+    version: 2024.w48
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   includeTcpDumpContainer: true #only for taking pcaps inside network function pod
@@ -375,7 +375,7 @@ oai-nr-ue:
   enabled: true
   nfimage:  
     repository: docker.io/oaisoftwarealliance/oai-nr-ue
-    version: 2024.w32
+    version: 2024.w48
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   config:
