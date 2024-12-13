@@ -275,9 +275,9 @@ data:
 
     fhi_72 = {
       dpdk_devices = ("@C_PLANE_PCI_ADD@", "@U_PLANE_PCI_ADD@");
-      system_core = @SYSTEM_CORE@;
-      io_core = @IO_CORE@;
-      worker_cores = (@WORKER_CORE_LIST@);
+      system_core = 3; # EDIT @
+      io_core = 2; # EDIT @
+      worker_cores = (1); # EDIT @
       du_addr = ("{{ .Values.multus.ruInterface.cPlaneMacAdd }}", "{{ .Values.multus.ruInterface.uPlaneMacAdd }}");
       ru_addr = ("{{ .Values.config.ruCPlaneMacAdd }}", "{{ .Values.config.ruUPlaneMacAdd }}");
       mtu = {{ .Values.multus.ruInterface.mtu }};
