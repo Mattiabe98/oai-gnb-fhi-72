@@ -312,16 +312,40 @@ oai-gnb:
     ruUPlaneMacAdd: 70:b3:d5:e1:5b:ff #benetel 70:b3:d5:e1:5b:ff
     n2IfName: "eth0"    # if multus.n2Interface.create is true then use n2
     n3IfName: "eth0"   #if multus.n3Interface.create is true then use n3 or you can only use 1 interface n2 or eth0
-  resources:
-    define: false
-    limits:
-      nf:
-        cpu: 3000m
-        memory: 2Gi
-    requests:
-      nf:
-        cpu: 3000m
-        memory: 2Gi
+resources:
+  define: true
+  limits:
+    nf:
+      cpu: 8
+      memory: 8Gi
+      # size of the hugepages is 1 Gi
+      hugepages: 10Gi
+      sriovCplaneClaim:
+        name: openshift.io/ruvfioc
+        quantity: 1
+      sriovUplaneClaim:
+        name: openshift.io/ruvfiou
+        quantity: 1
+    #If tcpdump container is disabled this value will not be used
+    tcpdump:
+      cpu: 100m
+      memory: 128Mi
+  requests:
+    nf:
+      cpu: 8
+      memory: 8Gi
+      # size of the hugepages is 1 Gi
+      hugepages: 10Gi
+      sriovCplaneClaim:
+        name: openshift.io/ruvfioc
+        quantity: 1
+      sriovUplaneClaim:
+        name: openshift.io/ruvfiou
+        quantity: 1
+    #If tcpdump container is disabled this value will not be used
+    tcpdump:
+      cpu: 100m
+      memory: 128Mi
   nodeSelector: {}
   nodeName: ""
 oai-nr-ue:
