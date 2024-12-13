@@ -290,16 +290,14 @@ oai-gnb:
       #routes:
       hostInterface: "bond0"  # Interface of the host machine on which this pod will be scheduled
     ruInterface:            #Only needed if using a ethernet based RU/USRP
-      create: false
-      ipAdd: "192.168.80.90"
-      # #name inside the pod is hardcoded right now
-      # name: "ru"
-      netmask: "24"
-      # if gatway is commented then it will be removed
-      gateway: "192.168.80.1"  #In case you don't have a gateway remove it from here
-      ## The value must be [0, master's MTU]. If commented it will masters MTU
-      mtu: 1500
-      hostInterface: "bond0"  # Interface of the host machine on which this pod will be scheduled  
+      create: true
+      mtu: 9216
+      vlan: 3 #vvdn 4 benetel 3
+      cPlaneMacAdd: 00:11:22:33:44:67 #vvdn 76:76:64:6e:00:01 #benetel 00:11:22:33:44:67
+      uPlaneMacAdd: 00:11:22:33:44:66 #vvdn 76:76:64:6e:00:02 #benetel 00:11:22:33:44:66
+      sriovNetworkNamespace: openshift-sriov-network-operator
+      sriovResourceNameCplane: ruvfioc
+      sriovResourceNameUplane: ruvfiou
   config:
     timeZone: "Europe/Paris"
     useAdditionalOptions: "--sa --rfsim --log_config.global_log_options level,nocolor,time"
