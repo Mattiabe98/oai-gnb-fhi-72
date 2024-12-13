@@ -93,7 +93,7 @@ podSecurityContext:
   runAsGroup: 0
 
 securityContext:
-  privileged: false
+  privileged: true
 
 tcpdumpimage:
   repository: docker.io/oaisoftwarealliance/oai-tcpdump-init
