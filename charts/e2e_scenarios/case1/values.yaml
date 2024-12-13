@@ -298,7 +298,7 @@ oai-gnb:
       # if gatway is commented then it will be removed
       gateway: "192.168.80.1"  #In case you don't have a gateway remove it from here
       ## The value must be [0, master's MTU]. If commented it will masters MTU
-      #mtu: 1500
+      mtu: 1500
       hostInterface: "bond0"  # Interface of the host machine on which this pod will be scheduled  
   config:
     timeZone: "Europe/Paris"
