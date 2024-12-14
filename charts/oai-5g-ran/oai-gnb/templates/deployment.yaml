@@ -74,14 +74,14 @@ spec:
         {{- if .Values.resources.define}}
         resources:
           requests:
-#            {{ .Values.resources.requests.nf.sriovCplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovCplaneClaim.quantity | quote  }}
-#            {{ .Values.resources.requests.nf.sriovUplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovUplaneClaim.quantity | quote  }}
+            {{ .Values.resources.requests.nf.sriovCplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovCplaneClaim.quantity | quote  }}
+            {{ .Values.resources.requests.nf.sriovUplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovUplaneClaim.quantity | quote  }}
             hugepages-1Gi: "8Gi"
             memory: {{ .Values.resources.requests.nf.memory | quote }}
             cpu: {{ .Values.resources.requests.nf.cpu | quote }}
           limits:
-#            {{ .Values.resources.requests.nf.sriovCplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovCplaneClaim.quantity | quote  }}
-#            {{ .Values.resources.requests.nf.sriovUplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovUplaneClaim.quantity | quote  }}
+            {{ .Values.resources.requests.nf.sriovCplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovCplaneClaim.quantity | quote  }}
+            {{ .Values.resources.requests.nf.sriovUplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovUplaneClaim.quantity | quote  }}
             hugepages-1Gi: "8Gi"
             memory: {{ .Values.resources.limits.nf.memory | quote }}
             cpu: {{ .Values.resources.limits.nf.cpu | quote }}
