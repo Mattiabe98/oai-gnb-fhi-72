@@ -313,13 +313,13 @@ oai-gnb:
     n2IfName: "eth0"    # if multus.n2Interface.create is true then use n2
     n3IfName: "eth0"   #if multus.n3Interface.create is true then use n3 or you can only use 1 interface n2 or eth0
 resources:
-  define: false
+  define: true
   limits:
     nf:
       cpu: 8
       memory: 8Gi
       # size of the hugepages is 1 Gi
-      hugepages: 10Gi
+      hugepages: 2Gi
       sriovCplaneClaim:
         name: openshift.io/ruvfioc
         quantity: 1
@@ -335,7 +335,7 @@ resources:
       cpu: 8
       memory: 8Gi
       # size of the hugepages is 1 Gi
-      hugepages: 10Gi
+      hugepages: 2Gi
       sriovCplaneClaim:
         name: openshift.io/ruvfioc
         quantity: 1
