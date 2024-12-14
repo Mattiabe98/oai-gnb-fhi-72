@@ -313,7 +313,7 @@ oai-gnb:
     n2IfName: "eth0"    # if multus.n2Interface.create is true then use n2
     n3IfName: "eth0"   #if multus.n3Interface.create is true then use n3 or you can only use 1 interface n2 or eth0
 resources:
-  define: true
+  define: false
   limits:
     nf:
       cpu: 8
