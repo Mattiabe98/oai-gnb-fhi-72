@@ -94,6 +94,8 @@ securityContext:
      - IPC_LOCK
      - SYS_NICE
      - SYS_ADMIN
+     - NET_ADMIN
+     - NET_RAW
     drop:
      - ALL
 
