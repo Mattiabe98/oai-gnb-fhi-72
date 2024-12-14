@@ -66,25 +66,25 @@ spec:
         image: "{{ .Values.nfimage.repository }}:{{ .Values.nfimage.version }}"
         imagePullPolicy: {{ .Values.nfimage.pullPolicy }}
         volumeMounts:
-#          - mountPath: /dev/hugepages
-#            name: hugepage
+          - mountPath: /dev/hugepages
+            name: hugepage
           - mountPath: /opt/oai-gnb/etc
             name: configuration
             # subPath: gnb.conf
         {{- if .Values.resources.define}}
         resources:
           requests:
-            {{ .Values.resources.requests.nf.sriovCplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovCplaneClaim.quantity | quote  }}
-            {{ .Values.resources.requests.nf.sriovUplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovUplaneClaim.quantity | quote  }}
-            hugepages-1Gi: "10Gi"
-            memory: {{ .Values.resources.requests.nf.memory | quote }}
-            cpu: {{ .Values.resources.requests.nf.cpu | quote }}
+#            {{ .Values.resources.requests.nf.sriovCplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovCplaneClaim.quantity | quote  }}
+#            {{ .Values.resources.requests.nf.sriovUplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovUplaneClaim.quantity | quote  }}
+            hugepages-1Gi: "2Gi"
+#            memory: {{ .Values.resources.requests.nf.memory | quote }}
+#            cpu: {{ .Values.resources.requests.nf.cpu | quote }}
           limits:
-            {{ .Values.resources.requests.nf.sriovCplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovCplaneClaim.quantity | quote  }}
-            {{ .Values.resources.requests.nf.sriovUplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovUplaneClaim.quantity | quote  }}
-            hugepages-1Gi: "10Gi"
-            memory: {{ .Values.resources.limits.nf.memory | quote }}
-            cpu: {{ .Values.resources.limits.nf.cpu | quote }}
+#            {{ .Values.resources.requests.nf.sriovCplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovCplaneClaim.quantity | quote  }}
+#            {{ .Values.resources.requests.nf.sriovUplaneClaim.name }}: {{ .Values.resources.requests.nf.sriovUplaneClaim.quantity | quote  }}
+            hugepages-1Gi: "2Gi"
+#            memory: {{ .Values.resources.limits.nf.memory | quote }}
+#            cpu: {{ .Values.resources.limits.nf.cpu | quote }}
         {{- end}}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
@@ -169,9 +169,9 @@ spec:
       - configMap:
           name: {{ .Chart.Name }}-configmap
         name: configuration
-#      - emptyDir:
-#          medium: HugePages
-#        name: hugepage
+      - emptyDir:
+          medium: HugePages
+        name: hugepage
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
