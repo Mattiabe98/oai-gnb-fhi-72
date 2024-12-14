@@ -134,10 +134,10 @@ resources:
       memory: 128Mi
   requests:
     nf:
-      cpu: 8
+      cpu: 4
       memory: 8Gi
       # size of the hugepages is 1 Gi
-      hugepages: 2Gi
+      hugepages: 1Gi
       sriovCplaneClaim:
         name: openshift.io/ruvfioc
         quantity: 1
