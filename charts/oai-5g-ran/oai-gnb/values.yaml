@@ -83,7 +83,7 @@ config:
   
 ## Debugging section
 start:
-  gnb: false #If false the network function container will run in sleep mode for manually testing
+  gnb: start #If false the network function container will run in sleep mode for manually testing
   tcpdump: false
 
 ##Only for the NF container
