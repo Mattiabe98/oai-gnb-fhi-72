@@ -271,33 +271,4 @@ data:
       f1ap_log_level                        ="debug";
     };
 
-    fhi_72 = {
-      dpdk_devices = ("0000:00:10.0", "0000:00:10.1");
-      system_core = 3; # EDIT @
-      io_core = 2; # EDIT @
-      worker_cores = (1); # EDIT @
-      du_addr = ("{{ .Values.multus.ruInterface.cPlaneMacAdd }}", "{{ .Values.multus.ruInterface.uPlaneMacAdd }}");
-      ru_addr = ("{{ .Values.config.ruCPlaneMacAdd }}", "{{ .Values.config.ruUPlaneMacAdd }}");
-      mtu = {{ .Values.multus.ruInterface.mtu }};
-      file_prefix = "fhi_72";
-      fh_config = ({
-        Tadv_cp_dl = 125;
-        T2a_cp_dl = (259, 500);
-        T2a_cp_ul = (25, 500);
-        T2a_up = (134, 375);
-        Ta3 = (152, 160);
-        T1a_cp_dl = (419, 470);
-        T1a_cp_ul = (285, 336);
-        T1a_up = (294, 345);
-        Ta4 = (0, 200);
-        ru_config = {
-          iq_width = 9;
-          iq_width_prach = 9;
-          fft_size = 12;
-        };
-        prach_config = {
-          eAxC_offset = 4;
-        };
-      });
-    };
 
