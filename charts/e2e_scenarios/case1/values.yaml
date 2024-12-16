@@ -300,7 +300,7 @@ oai-gnb:
       sriovResourceNameUplane: ruvfiou
   config:
     timeZone: "Europe/Paris"
-    useAdditionalOptions: "--rfsim --phy-test --log_config.global_log_options level,nocolor,time"
+    useAdditionalOptions: "--rfsim --sa --log_config.global_log_options level,nocolor,time"
     gnbName: "oai-gnb-rfsim"
     mcc: "001"   # check the information with AMF, SMF, UPF
     mnc: "01"    # check the information with AMF, SMF, UPF
