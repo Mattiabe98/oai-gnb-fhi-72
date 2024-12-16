@@ -88,7 +88,7 @@ start:
 
 ##Only for the NF container
 securityContext:
-  privileged: false
+  privileged: true
   capabilities:
     add:
      - IPC_LOCK
