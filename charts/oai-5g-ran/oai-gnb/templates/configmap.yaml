@@ -242,6 +242,14 @@ data:
       do_precoding = 0; # needs to match O-RU configuration
     }
     );
+    rfsimulator :
+    {
+      serveraddr = "server";
+      serverport = 4043;
+      options = (); #("saviq"); or/and "chanmod"
+      modelname = "AWGN";
+      IQfile = "/tmp/rfsimulator.iqs";
+    };
 
     security = {
       # preferred ciphering algorithms
