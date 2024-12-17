@@ -215,25 +215,20 @@ data:
     );
 
     RUs = (
-    {
-      local_rf       = "no";
-      nb_tx          = 4;
-      nb_rx          = 4;
-      att_tx         = 0
-      att_rx         = 0;
-      bands          = [78];
-      max_pdschReferenceSignalPower = -27;
-      max_rxgain                    = 75;
-      sf_extension                  = 0;
-      eNB_instances  = [0];
-      ru_thread_core = @RU_CORE@;
-      sl_ahead       = 10;
-      ##beamforming 1x2 matrix: 1 layer x 2 antennas
-      bf_weights = [0x00007fff, 0x0000,0x00007fff, 0x0000];
-      tr_preference  = "raw_if4p5"; # important: activate FHI7.2
-      do_precoding = 0; # needs to match O-RU configuration
-    }
-    );
+        {		  
+           local_rf       = "yes"
+             nb_tx          = 1
+             nb_rx          = 1
+             att_tx         = 0
+             att_rx         = 0;
+             bands          = [78];
+             max_pdschReferenceSignalPower = -27;
+             max_rxgain                    = 114;
+             eNB_instances  = [0];
+             clock_src = "internal";
+        }
+    );  
+
     rfsimulator: {
     serveraddr = "server";
         serverport = 4043;
@@ -246,8 +241,8 @@ data:
     {
       global_log_level                      ="debug";
       hw_log_level                          ="debug";
-      phy_log_level                         ="debug";
-      mac_log_level                         ="debug";
+      phy_log_level                         ="info";
+      mac_log_level                         ="info";
       rlc_log_level                         ="debug";
       pdcp_log_level                        ="debug";
       rrc_log_level                         ="debug";
