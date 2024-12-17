@@ -97,6 +97,5 @@ resources:
 terminationGracePeriodSeconds: 0
 
 nodeSelector: 
-  role: ran
 
-nodeName:
+nodeName: okd4-compute-1.okd.home.lab
