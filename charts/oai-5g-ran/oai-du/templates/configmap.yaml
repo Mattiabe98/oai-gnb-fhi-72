@@ -204,7 +204,7 @@ data:
       #prach_dtx_threshold = 200;
       #pucch0_dtx_threshold = 150;
       #ofdm_offset_divisor = 8;
-      prach_dtx_threshold = 100; UNCOMMENT TO ENABLE FRONTHAUL
+      prach_dtx_threshold = 100; #UNCOMMENT TO ENABLE FRONTHAUL
       pucch0_dtx_threshold = 80;
       pusch_dtx_threshold = 10;
       max_ldpc_iterations = 10;
