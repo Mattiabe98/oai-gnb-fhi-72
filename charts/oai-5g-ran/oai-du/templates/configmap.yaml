@@ -226,6 +226,14 @@ data:
              clock_src = "internal";
         }
     );
+
+    rfsimulator: {
+    serveraddr = "server";
+        serverport = 4043;
+        options = (); #("saviq"); or/and "chanmod"
+        modelname = "AWGN";
+        IQfile = "/tmp/rfsimulator.iqs"
+    }
     
     THREAD_STRUCT = (
       {
@@ -293,4 +301,3 @@ data:
           eAxC_offset = 4;
         };
       });
-    };
