@@ -5,7 +5,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Chart.Name }}-configmap
 data:
-  gnb.conf: |
+  du.conf: |
     Active_gNBs = ( "{{ .Values.config.duName }}");
     # Asn1_verbosity, choice in: none, info, annoying
     Asn1_verbosity = "none";
