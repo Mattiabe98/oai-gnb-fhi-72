@@ -27,7 +27,7 @@ oai-nrf:
   enabled: true
   nfimage:
     repository: docker.io/oaisoftwarealliance/oai-nrf          ## The image will be pulled from dockerhub
-    version: v2.2.0                          ## The branch to be used to pull from dockerhub
+    version: v2.1.0                          ## The branch to be used to pull from dockerhub
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   includeTcpDumpContainer: true #only for taking pcaps inside network function pod
@@ -395,7 +395,7 @@ oai-nr-ue:
   enabled: true
   nfimage:  
     repository: docker.io/oaisoftwarealliance/oai-nr-ue
-    version: v2.1.0
+    version: v2.2.0
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   config:
