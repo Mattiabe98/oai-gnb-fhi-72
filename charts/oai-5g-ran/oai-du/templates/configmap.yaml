@@ -15,6 +15,7 @@ data:
         ////////// Identification parameters:
         gNB_ID    =  0xe12;
         gNB_name  =  "{{ .Values.config.duName }}";
+        gNB_DU_ID = 0xe00;
 
         // Tracking area code, 0x0000 and 0xfffe are reserved values
         tracking_area_code  = {{ .Values.config.tac}} ;
