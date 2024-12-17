@@ -260,7 +260,7 @@ oai-smf:
 oai-cu:
   enabled: true
   nfimage:  
-    repository: docker.io/oaisoftwarealliance/oai-gnb
+    repository: docker.io/oaisoftwarealliance/oai-gnb-fhi72
     version: 2024.w48
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
