@@ -176,7 +176,9 @@ data:
             SCTP_INSTREAMS  = 2;
             SCTP_OUTSTREAMS = 2;
         };
-
+      }
+    );
+    
     MACRLCs = (
     {
       num_cc                      = 1;
