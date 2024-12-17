@@ -217,7 +217,7 @@ data:
 
     RUs = (
         {		  
-           local_rf       = "yes"
+           local_rf       = "no"
              nb_tx          = 1
              nb_rx          = 1
              att_tx         = 0
