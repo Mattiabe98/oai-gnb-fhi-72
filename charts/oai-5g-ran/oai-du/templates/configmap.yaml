@@ -32,7 +32,7 @@ data:
         #do_CSIRS              = 1;
         #do_SRS                = 0 ;
         #sib1_tda        = 15;
-        #force_UL256qam_off    = 1; #256 QAM not enabled in CU-DU split?
+        force_UL256qam_off    = 1; #256 QAM not enabled in CU-DU split?
 
         #pdcch_ConfigSIB1 = (
         #  {
