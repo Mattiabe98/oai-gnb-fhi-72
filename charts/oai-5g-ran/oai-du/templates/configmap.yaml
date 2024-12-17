@@ -24,7 +24,7 @@ data:
         nr_cellid = 1;
 
         ////////// Physical parameters:
-
+        min_rxtxtime          = 6;
         pdsch_AntennaPorts_XP = 2; 
         pdsch_AntennaPorts_N1 = 2;
         maxMIMO_layers        = 2;
@@ -32,7 +32,7 @@ data:
         do_CSIRS              = 1;
         do_SRS                = 0 ;
         sib1_tda        = 15;
-        #force_UL256qam_off    = 1;
+        force_UL256qam_off    = 1; #256 QAM not enabled in CU-DU split?
 
         pdcch_ConfigSIB1 = (
           {
@@ -244,15 +244,15 @@ data:
 
     log_config :
     {
-      global_log_level                      ="info";
-      hw_log_level                          ="info";
-      phy_log_level                         ="info";
-      mac_log_level                         ="info";
-      rlc_log_level                         ="info";
-      pdcp_log_level                        ="info";
-      rrc_log_level                         ="info";
-      ngap_log_level                        ="info";
-      f1ap_log_level                        ="info";
+      global_log_level                      ="debug";
+      hw_log_level                          ="debug";
+      phy_log_level                         ="debug";
+      mac_log_level                         ="debug";
+      rlc_log_level                         ="debug";
+      pdcp_log_level                        ="debug";
+      rrc_log_level                         ="debug";
+      ngap_log_level                        ="debug";
+      f1ap_log_level                        ="debug";
     };
 
     fhi_72 = {
