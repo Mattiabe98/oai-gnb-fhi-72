@@ -360,16 +360,36 @@ oai-du:
     cuHost: "oai-cu" ## Ip-address or hostname
     f1cuPort: "2153"   #2153 if using same interface for f1 and n3 else standard port 2152 should be use if f1 and n3 interface are different
     f1duPort: "2153"   #2153 if using same interface for f1 and n3 else standard port 2152 should be use if f1 and n3 interface are different
-  resources:
-    define: false
-    limits:
-      nf:
-        cpu: 3000m
-        memory: 2Gi
-    requests:
-      nf:
-        cpu: 3000m
-        memory: 2Gi
+resources:
+  define: true
+  limits:
+    nf:
+      cpu: 8
+      memory: 8Gi
+      # size of the hugepages is 1 Gi
+      hugepages: 2Gi
+      sriovCplaneClaim:
+        name: openshift.io/ruvfioc
+        quantity: 1
+      sriovUplaneClaim:
+        name: openshift.io/ruvfiou
+        quantity: 1
+    #If tcpdump container is disabled this value will not be used
+    tcpdump:
+      cpu: 100m
+      memory: 128Mi
+  requests:
+    nf:
+      cpu: 8
+      memory: 8Gi
+      # size of the hugepages is 1 Gi
+      hugepages: 2Gi
+      sriovCplaneClaim:
+        name: openshift.io/ruvfioc
+        quantity: 1
+      sriovUplaneClaim:
+        name: openshift.io/ruvfiou
+        quantity: 1
   nodeSelector:
 oai-nr-ue:
   enabled: true
