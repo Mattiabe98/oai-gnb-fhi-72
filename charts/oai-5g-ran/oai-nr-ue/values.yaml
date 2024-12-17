@@ -96,6 +96,7 @@ resources:
       memory: 128Mi
 terminationGracePeriodSeconds: 0
 
-nodeSelector: {}
+nodeSelector: 
+  role: ran
 
 nodeName:
