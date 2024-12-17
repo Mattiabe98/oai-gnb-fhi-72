@@ -395,7 +395,7 @@ oai-nr-ue:
   enabled: true
   nfimage:  
     repository: docker.io/oaisoftwarealliance/oai-nr-ue
-    version: 2024.w48
+    version: v2.1.0
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   config:
