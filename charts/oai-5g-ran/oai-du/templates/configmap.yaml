@@ -270,10 +270,10 @@ data:
     };
 
     fhi_72 = {
-      dpdk_devices = ("@C_PLANE_PCI_ADD@", "@U_PLANE_PCI_ADD@");
-      system_core = @SYSTEM_CORE@;
-      io_core = @IO_CORE@;
-      worker_cores = (@WORKER_CORE_LIST@);
+      dpdk_devices = ("0000:00:10.0", "0000:00:10.1");
+      system_core = 2;
+      io_core = 3;
+      worker_cores = (4);
       du_addr = ("{{ .Values.multus.ruInterface.cPlaneMacAdd }}", "{{ .Values.multus.ruInterface.uPlaneMacAdd }}");
       ru_addr = ("{{ .Values.config.ruCPlaneMacAdd }}", "{{ .Values.config.ruUPlaneMacAdd }}");
       mtu = {{ .Values.multus.ruInterface.mtu }};
