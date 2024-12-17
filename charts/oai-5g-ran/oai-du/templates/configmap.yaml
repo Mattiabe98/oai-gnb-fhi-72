@@ -227,16 +227,24 @@ data:
              max_rxgain                    = 114;
              eNB_instances  = [0];
              clock_src = "internal";
+             bf_weights = [0x00007fff, 0x0000, 0x0000, 0x0000];
         }
     );  
-
+    
+    THREAD_STRUCT = (
+      {
+        #three config for level of parallelism "PARALLEL_SINGLE_THREAD", "PARALLEL_RU_L1_SPLIT", or "PARALLEL_RU_L1_TRX_SPLIT"
+        parallel_config    = "PARALLEL_SINGLE_THREAD";
+        #two option for worker "WORKER_DISABLE" or "WORKER_ENABLE"
+        worker_config      = "WORKER_ENABLE";
+      }
+    );
     rfsimulator: {
     serveraddr = "server";
         serverport = 4043;
         options = (); #("saviq"); or/and "chanmod"
         modelname = "AWGN";
         IQfile = "/tmp/rfsimulator.iqs"
-        TMRMODE = 7;
     }
 
     log_config :
