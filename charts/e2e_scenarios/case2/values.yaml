@@ -324,7 +324,7 @@ oai-du:
   enabled: true
   kubernetesDistribution: Kubernetes #Kubernetes/Kubernetes Kubernetes for Upstream Kubernetes
   nfimage:  
-    repository: docker.io/oaisoftwarealliance/oai-gnb
+    repository: docker.io/oaisoftwarealliance/oai-gnb-fhi72
     version: 2024.w48
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
