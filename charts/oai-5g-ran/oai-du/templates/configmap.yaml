@@ -201,17 +201,17 @@ data:
     {
       num_cc = 1;
       tr_n_preference = "local_mac";
-      prach_dtx_threshold = 200;
-      pucch0_dtx_threshold = 150;
-      ofdm_offset_divisor = 8;
-      #prach_dtx_threshold = 100; UNCOMMENT TO ENABLE FRONTHAUL
-      #pucch0_dtx_threshold = 80;
-      #pusch_dtx_threshold = 10;
-      #max_ldpc_iterations = 10;
-      #tx_amp_backoff_dB = 12; # needs to match O-RU configuration
-      #L1_rx_thread_core = 1;
-      #L1_tx_thread_core = 2; # relevant after merge of l1_tx_thread
-      #phase_compensation = 0; # needs to match O-RU configuration      
+      #prach_dtx_threshold = 200;
+      #pucch0_dtx_threshold = 150;
+      #ofdm_offset_divisor = 8;
+      prach_dtx_threshold = 100; UNCOMMENT TO ENABLE FRONTHAUL
+      pucch0_dtx_threshold = 80;
+      pusch_dtx_threshold = 10;
+      max_ldpc_iterations = 10;
+      tx_amp_backoff_dB = 12; # needs to match O-RU configuration
+      L1_rx_thread_core = 1;
+      L1_tx_thread_core = 2; # relevant after merge of l1_tx_thread
+      phase_compensation = 0; # needs to match O-RU configuration      
     }
     );
 
