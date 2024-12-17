@@ -238,6 +238,7 @@ data:
         options = (); #("saviq"); or/and "chanmod"
         modelname = "AWGN";
         IQfile = "/tmp/rfsimulator.iqs"
+        TMRMODE = 7;
     }
 
     log_config :
