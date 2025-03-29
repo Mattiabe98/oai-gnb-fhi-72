@@ -105,10 +105,6 @@ spec:
             CU_IP_ADDRESS=$(getent hosts $CU_HOST | awk '{print $1}')
             CU_IP_ADDRESS=$(if [[ $CU_IP_ADDRESS ]]; then echo $CU_IP_ADDRESS; else echo $CU_HOST;fi)
             F1_DU_IP_ADDRESS=$(ip -f inet addr show $F1_IF_NAME | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*");
-            PCI_ADD_U=PCIDEVICE_OPENSHIFT_IO_${SRIOV_RESOURCE_NAME_UPLANE^^};
-            PCI_ADD_C=PCIDEVICE_OPENSHIFT_IO_${SRIOV_RESOURCE_NAME_CPLANE^^};
-            U_PLANE_PCI_ADD=$(echo ${!PCI_ADD_U});
-            C_PLANE_PCI_ADD=$(echo ${!PCI_ADD_C});
             LIST=($(grep -oP '@[a-zA-Z0-9_]+@' $CONF | grep CORE | sed -e "s#@##g" ));
             CPUS=($(cat /sys/fs/cgroup/cpuset.cpus.effective | awk '/-/{for (i=$1; i<=$2; i++)printf "%s%s",i,ORS;next} 1' ORS=' ' RS=, FS=-));
             for i in ${!LIST[*]}; do eval "${LIST[$i]}=${CPUS[$i]}";done;
@@ -126,10 +122,6 @@ spec:
             value: {{ .Values.config.timeZone }}
           - name: USE_ADDITIONAL_OPTIONS
             value: {{ .Values.config.useAdditionalOptions }}
-          - name: SRIOV_RESOURCE_NAME_UPLANE
-            value: {{ .Values.multus.ruInterface.sriovResourceNameUplane }}
-          - name: SRIOV_RESOURCE_NAME_CPLANE
-            value: {{ .Values.multus.ruInterface.sriovResourceNameCplane }}
           - name: CU_HOST
             value: {{ .Values.config.cuHost }}
           - name: F1_IF_NAME
