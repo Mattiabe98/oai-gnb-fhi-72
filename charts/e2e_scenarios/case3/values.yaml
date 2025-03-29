@@ -261,7 +261,7 @@ oai-cu-cp:
   enabled: true
   nfimage:  
     repository: docker.io/oaisoftwarealliance/oai-gnb
-    version: 2024.w32
+    version: develop
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   includeTcpDumpContainer: true #only for taking pcaps inside network function pod
@@ -320,7 +320,7 @@ oai-cu-up:
   enabled: true
   nfimage:  
     repository: docker.io/oaisoftwarealliance/oai-gnb
-    version: 2024.w32                         ## The branch to be used to pull from dockerhub
+    version: develop                         ## The branch to be used to pull from dockerhub
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   includeTcpDumpContainer: true #only for taking pcaps inside network function pod
@@ -380,7 +380,7 @@ oai-du:
   enabled: true
   nfimage:  
     repository: docker.io/oaisoftwarealliance/oai-gnb
-    version: 2024.w32
+    version: develop
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   includeTcpDumpContainer: true #only for taking pcaps inside network function pod
@@ -427,10 +427,10 @@ oai-du:
         memory: 2Gi
   nodeSelector:
 oai-nr-ue:
-  enabled: true
+  enabled: false
   nfimage:  
     repository: docker.io/oaisoftwarealliance/oai-nr-ue
-    version: 2024.w32
+    version: develop
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
   config:
