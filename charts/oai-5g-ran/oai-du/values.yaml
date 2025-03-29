@@ -117,12 +117,6 @@ resources:
       memory: 8Gi
       # size of the hugepages is 1 Gi
       hugepages: 2Gi
-      sriovCplaneClaim:
-        name: openshift.io/ruvfioc
-        quantity: 1
-      sriovUplaneClaim:
-        name: openshift.io/ruvfiou
-        quantity: 1
     #If tcpdump container is disabled this value will not be used
     tcpdump:
       cpu: 100m
@@ -133,12 +127,6 @@ resources:
       memory: 8Gi
       # size of the hugepages is 1 Gi
       hugepages: 1Gi
-      sriovCplaneClaim:
-        name: openshift.io/ruvfioc
-        quantity: 1
-      sriovUplaneClaim:
-        name: openshift.io/ruvfiou
-        quantity: 1
     #If tcpdump container is disabled this value will not be used
     tcpdump:
       cpu: 100m
