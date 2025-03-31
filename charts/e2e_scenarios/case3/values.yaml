@@ -379,7 +379,7 @@ oai-cu-up:
 oai-du:
   enabled: true
   nfimage:  
-    repository: docker.io/oaisoftwarealliance/oai-gnb
+    repository: docker.io/oaisoftwarealliance/oai-gnb-fhi72
     version: develop
     # pullPolicy: IfNotPresent or Never or Always
     pullPolicy: IfNotPresent
