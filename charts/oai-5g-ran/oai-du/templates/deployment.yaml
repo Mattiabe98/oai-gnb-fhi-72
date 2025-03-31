@@ -73,6 +73,8 @@ spec:
             name: hugepage
           - mountPath: /opt/oai-gnb/etc
             name: configuration
+          - mountPath: /dev/vfio
+            name: vfio  
             # subPath: gnb.conf
         {{- if .Values.resources.define}}
         resources:
@@ -160,6 +162,10 @@ spec:
       - emptyDir:
           medium: HugePages
         name: hugepage
+      - name: vfio
+        hostPath:
+          path: /dev/vfio
+          type: Directory
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
