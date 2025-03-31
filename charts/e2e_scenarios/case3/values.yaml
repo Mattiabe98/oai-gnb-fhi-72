@@ -416,15 +416,15 @@ oai-du:
     f1cuPort: "2153"   #2153 if using same interface for f1 and n3 else standard port 2152 should be use if f1 and n3 interface are different
     f1duPort: "2153"   #2153 if using same interface for f1 and n3 else standard port 2152 should be use if f1 and n3 interface are different
   resources:
-    define: false
+    define: true
     limits:
       nf:
-        cpu: 3000m
-        memory: 2Gi
+        cpu: 8
+        memory: 32Gi
     requests:
       nf:
-        cpu: 3000m
-        memory: 2Gi
+        cpu: 8
+        memory: 32Gi
   nodeSelector:
 oai-nr-ue:
   enabled: false
