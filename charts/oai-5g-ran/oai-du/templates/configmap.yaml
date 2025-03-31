@@ -242,6 +242,7 @@ data:
       worker_cores = (6);
       ru_addr = ("1c:a0:ef:87:68:b6");
       mtu = 9000;
+      dpdk_iova_mode = "VA"
       fh_config = ({
         T1a_cp_dl = (285, 470);
         T1a_cp_ul = (285, 429);
