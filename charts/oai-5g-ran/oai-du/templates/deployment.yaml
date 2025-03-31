@@ -109,7 +109,8 @@ spec:
             VARS=$(grep -oP '@[a-zA-Z0-9_]+@' $CONF);
             for v in ${VARS};do N=`echo $v | sed -e "s#@##g"`; E="${E} -e s/${v}/${!N}/g";E="${E#' -e '}";done;
             sed -e ${E} $CONF | tee /tmp/du.conf;
-            exec /opt/oai-gnb/bin/nr-softmodem -O /tmp/du.conf $USE_ADDITIONAL_OPTIONS;
+            sleep 10000;
+            # exec /opt/oai-gnb/bin/nr-softmodem -O /tmp/du.conf $USE_ADDITIONAL_OPTIONS;
         {{- else}}
         command:
           - /bin/sleep
